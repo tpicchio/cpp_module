@@ -5,24 +5,25 @@
 #                                                     +:+ +:+         +:+      #
 #    By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/08/24 10:31:14 by tpicchio          #+#    #+#              #
-#    Updated: 2024/08/27 10:27:01 by tpicchio         ###   ########.fr        #
+#    Created: 2024/08/28 10:28:11 by tpicchio          #+#    #+#              #
+#    Updated: 2024/08/28 10:29:49 by tpicchio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	phonebook
+NAME = unnecessary_violence
 
-SRC		=	PhoneBook.cpp	\
-			Contact.cpp		\
-			main.cpp
+SRCS = 	main.cpp \
+		HumanA.cpp \
+		HumanB.cpp \
+		Weapon.cpp
 
-FLAGS	=	-Werror -Wall -Wextra -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++98
 
-all:		$(NAME)
+all: $(NAME)
 
-$(NAME): $(SRC)
+$(NAME): $(SRCS)
 	@echo "$(BLUE)Compiling $(NAME).$(RESET)"
-	c++	$(FLAGS) $(SRC) -o $(NAME)
+	c++ $(FLAGS) $(SRCS) -o $(NAME)
 
 clean:
 	@echo "$(YELLOW)There's nothing to clean, try fclean.$(RESET)"
@@ -34,7 +35,7 @@ fclean:
 	else \
 		echo "$(YELLOW)No executable to remove.$(RESET)"; \
 	fi
-	
+
 re: fclean $(NAME)
 
 .SILENT:

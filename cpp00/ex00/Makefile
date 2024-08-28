@@ -14,8 +14,12 @@ clean:
 	@echo "$(YELLOW)There's nothing to clean, try fclean.$(RESET)"
 
 fclean:
-	@echo "$(RED)Removed executable $(NAME).$(RESET)"
-	rm $(NAME)
+	if [ -e $(NAME) ] ; then \
+		echo "$(RED)Removed executable $(NAME).$(RESET)"; \
+		rm $(NAME); \
+	else \
+		echo "$(YELLOW)No executable to remove.$(RESET)"; \
+	fi
 
 re: fclean $(NAME)
 
