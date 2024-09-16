@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 10:50:27 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/08/27 10:53:43 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/09/12 09:26:32 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ int		main(void)
 	horde = zombieHorde(n, name);
 	for (int i = 0; i < n; i++)
 		horde[i].announce();
-	// for (int i = 0; i < n; i++)
-	// 	delete &horde[i];
 	delete[] horde;
 	return (0);
 }

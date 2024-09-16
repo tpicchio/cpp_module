@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 10:33:17 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/08/31 10:48:18 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/09/13 17:04:56 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class ClapTrap {
 		int _attack_damage;
 
 	public:
+		ClapTrap(void);
 		ClapTrap(std::string name);
 		ClapTrap(const ClapTrap &src);
 		~ClapTrap(void);

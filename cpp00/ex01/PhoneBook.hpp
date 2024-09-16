@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 16:15:29 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/08/24 10:22:01 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/09/10 12:35:55 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ class PhoneBook
 	private:
 		Contact	contacts[8];
 		int		pos;
+		void	displayContact( int index );
 		
 	public:
 		PhoneBook( void );
@@ -28,7 +29,6 @@ class PhoneBook
 		void	addContact( void );
 		void	searchContact( void );
 		void	displayPhoneBook( void );
-		void	displayContact( int index );
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 10:50:12 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/09/01 10:53:53 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/09/14 12:10:23 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ class Dog : public Animal
 {
 	public:
 		Dog();
-		Dog(Dog const &other);
-		virtual ~Dog();
-		Dog &operator=(Dog const &other);
+		Dog(Dog const &cpy);
+		~Dog();
+
+		Dog &operator=(Dog const &cpy);
+
 		virtual void makeSound() const;
 };
 

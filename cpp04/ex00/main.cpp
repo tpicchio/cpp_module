@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 10:56:28 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/09/01 11:30:38 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/09/14 10:39:11 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int main()
 	const WrongAnimal* anomal = new WrongAnimal();
 	const WrongAnimal* catfish = new WrongCat();
 
+	std::cout << std::endl;
 	std::cout << "Type: " << animal->getType() << std::endl;
 	animal->makeSound();
 	std::cout << "\nType: " << dog->getType() << std::endl;
@@ -32,6 +33,7 @@ int main()
 	anomal->makeSound();
 	std::cout << "\nType: " << catfish->getType() << std::endl;
 	catfish->makeSound();
+	std::cout << std::endl;
 
 	delete animal;
 	delete dog;

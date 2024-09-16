@@ -6,13 +6,13 @@
 #    By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/01 11:08:31 by tpicchio          #+#    #+#              #
-#    Updated: 2024/09/01 11:09:30 by tpicchio         ###   ########.fr        #
+#    Updated: 2024/09/11 16:22:25 by tpicchio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = polymorphism
+NAME = brain
 
-SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
+SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp
 
 FLAGS = -Wall -Wextra -Werror -std=c++98
 

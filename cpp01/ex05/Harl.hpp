@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 11:42:18 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/08/28 11:48:38 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/09/12 10:52:10 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,13 @@
 class Harl
 {
 	private:
-		std::string	_name;
 		void debug(void);
 		void info(void);
 		void warning(void);
 		void error(void);
 
 	public:
-		Harl(std::string name);
+		Harl(void);
 		~Harl(void);
 		void complain(std::string level);
 

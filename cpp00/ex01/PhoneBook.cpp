@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 10:11:57 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/08/24 10:38:14 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/09/10 12:49:55 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	PhoneBook::searchContact(void)
 	std::cout << "Nickname: " << this->contacts[index].getNickname() << std::endl;
 	std::cout << "Phone Number: " << this->contacts[index].getPhoneNumber() << std::endl;
 	std::cout << "Darkest Secret: " << this->contacts[index].getSecret() << std::endl;
-	std::cout << "Press enter to continue." << std::endl;
+	std::cout << "\nPress enter to continue." << std::endl;
 	std::cin.ignore();
 }
 

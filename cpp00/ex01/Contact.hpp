@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 16:16:02 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/08/24 11:02:42 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/09/10 12:33:57 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ class Contact
 		std::string	nickname;
 		std::string	phone_number;
 		std::string	secret;
+		std::string	trimAndReplaceStr(std::string str);
+		int			isValidStr(std::string str);
 
 	public:
 		Contact(void);
@@ -38,8 +40,6 @@ class Contact
 		std::string	getNickname(void);
 		std::string	getPhoneNumber(void);
 		std::string	getSecret(void);
-		std::string	trimAndReplaceStr(std::string str);
-		int			isValidStr(std::string str);
 };
 
 #endif

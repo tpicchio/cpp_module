@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 10:57:55 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/08/31 11:04:40 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/09/14 09:42:19 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@
 class FragTrap : public ClapTrap
 {
 	public:
+		FragTrap(void);
 		FragTrap(std::string name);
 		FragTrap(const FragTrap &copy);
-		FragTrap &operator=(const FragTrap &copy);
 		~FragTrap(void);
+
+		FragTrap &operator=(const FragTrap &copy);
 
 		void highFivesGuys(void);
 };

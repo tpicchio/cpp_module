@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 10:11:36 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/08/24 11:18:12 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/09/10 12:47:03 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ std::string	Contact::trimAndReplaceStr(std::string str)
 {
 	for (size_t i = 0; i < str.length(); i++)
 	{
-		if (str[i] == '\t')
+		if (str[i] < 32 || str[i] > 126)
 			str[i] = ' ';
 	}
 	while (str[0] == ' ')

@@ -6,17 +6,9 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 10:56:28 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/09/01 11:49:42 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/09/14 12:05:08 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*In your main function, create and fill an array of Animal objects. Half of it will
-be Dog objects and the other half will be Cat objects. At the end of your program
-execution, loop over this array and delete every Animal. You must delete directly dogs
-and cats as Animals. The appropriate destructors must be called in the expected order.
-Don’t forget to check for memory leaks.
-A copy of a Dog or a Cat mustn’t be shallow. Thus, you have to test that your copies
-are deep copies!*/
 
 #include "Dog.hpp"
 #include "Cat.hpp"
@@ -25,49 +17,64 @@ int main()
 {
 	const int n = 10;
 	Animal* animals[n];
+	char	answer = 's';
+	int		i = 0;
 
-	for (int i = 0; i < n / 2; i++)
-		animals[i] = new Dog();
-	for (int i = n / 2; i < n; i++)
-		animals[i] = new Cat();
-
-	//print some random ideas
-	animals[0].
-
+	std::cout << "\033[H\033[J";
 	for (int i = 0; i < n; i++)
 	{
-		animals[i]->makeSound();
-		delete animals[i];
+		if (i % 2 == 0)
+			animals[i] = new Cat();
+		else
+			animals[i] = new Dog();
+	}
+	while (answer != 'n')
+	{
+		std::cout << "\n\n10 animals created, odd indexes are cats, even indexes are dogs." << std::endl;
+		std::cout << "\nOption:\n'm' to make a sound\n'n' to exit" << std::endl;
+		std::cin >> answer;
+		std::cout << "\033[H\033[J";
+		switch (answer)
+		{
+			case 'm':
+				std::cout << "Index of the animal you want to make a sound: ";
+				std::cin >> answer;
+				i = answer - '0' - 1;
+				if (i < 0 || i >= n)
+					std::cout << "Invalid index" << std::endl;
+				else
+					animals[i]->makeSound();
+				break;
+			case 'n':
+				break;
+			default:
+				std::cout << "Invalid input" << std::endl;
+				break;
+		}
 	}
 
+	
+	std::cout << "\033[H\033[J";
+	std::cout << "\n\n\tTest deep copy\n" << std::endl;
+	Cat *cat = new Cat();
+	std::cout << std::endl;
+	cat->setIdea(0, "I'm a cat");
+	cat->setIdea(1, "I'm hungry");
+	cat->setIdea(2, "I'm sleepy");
+	std::cout << cat->getIdea(1) << std::endl;
+	std::cout << cat->getIdea(2) << std::endl;
+	std::cout << cat->getIdea(0) << std::endl;
+	std::cout << std::endl;
+	Cat *cat2 = new Cat(*cat);
+	delete cat;
+	std::cout << std::endl;
+	std::cout << cat2->getIdea(1) << std::endl;
+	std::cout << cat2->getIdea(2) << std::endl;
+	std::cout << cat2->getIdea(0) << std::endl;
+	std::cout << std::endl;
+	delete cat2;
+	std::cout << std::endl;
+	for (int i = 0; i < n; i++)
+		delete animals[i];
 	return 0;
 }
-
-
-
-// int main()
-// {
-// 	const Animal* animal = new Animal();
-// 	const Animal* dog = new Dog();
-// 	const Animal* cat = new Cat();
-// 	const WrongAnimal* anomal = new WrongAnimal();
-// 	const WrongAnimal* catfish = new WrongCat();
-
-// 	std::cout << "Type: " << animal->getType() << std::endl;
-// 	animal->makeSound();
-// 	std::cout << "\nType: " << dog->getType() << std::endl;
-// 	dog->makeSound();
-// 	std::cout << "\nType: " << cat->getType() << std::endl;
-// 	cat->makeSound();
-// 	std::cout << "\nType: " << anomal->getType() << std::endl;
-// 	anomal->makeSound();
-// 	std::cout << "\nType: " << catfish->getType() << std::endl;
-// 	catfish->makeSound();
-
-// 	delete animal;
-// 	delete dog;
-// 	delete cat;
-// 	delete anomal;
-// 	delete catfish;
-// 	return 0;
-// }

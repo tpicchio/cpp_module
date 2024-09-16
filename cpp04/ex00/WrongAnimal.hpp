@@ -6,14 +6,9 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 11:12:38 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/09/01 11:13:00 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/09/14 11:55:58 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*o ensure you understood how it works, implement a WrongCat class that inherits
-from a WrongAnimal class. If you replace the Animal and the Cat by the wrong ones
-in the code above, the WrongCat should output the WrongAnimal sound.
-Implement and turn in more tests than the ones given above*/
 
 #ifndef WRONGANIMAL_HPP
 # define WRONGANIMAL_HPP
@@ -27,11 +22,13 @@ class WrongAnimal
 	public:
 		WrongAnimal();
 		WrongAnimal(std::string type);
-		WrongAnimal(WrongAnimal const &other);
+		WrongAnimal(WrongAnimal const &cpy);
 		virtual ~WrongAnimal();
-		WrongAnimal &operator=(WrongAnimal const &other);
+
+		WrongAnimal &operator=(WrongAnimal const &cpy);
+
 		std::string getType() const;
-		virtual void makeSound() const;
+		void makeSound() const;
 };
 
 #endif

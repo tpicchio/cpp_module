@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/31 10:55:36 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/08/31 10:56:16 by tpicchio         ###   ########.fr       */
+/*   Created: 2024/08/31 10:33:17 by tpicchio          #+#    #+#             */
+/*   Updated: 2024/09/13 17:05:10 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,25 @@
 
 #include <iostream>
 
-class ClapTrap
-{
-	public:
-		ClapTrap(std::string name);
-		ClapTrap(const ClapTrap &copy);
-		ClapTrap &operator=(const ClapTrap &copy);
-		~ClapTrap(void);
-
-		void attack(std::string const & target);
-		void takeDamage(unsigned int amount);
-		void beRepaired(unsigned int amount);
+class ClapTrap {
 
 	protected:
 		std::string _name;
-		unsigned int _hit_points;
-		unsigned int _energy_points;
-		unsigned int _attack_damage;
+		int _hit_points;
+		int _energy_points;
+		int _attack_damage;
+
+	public:
+		ClapTrap(void);
+		ClapTrap(std::string name);
+		ClapTrap(const ClapTrap &src);
+		~ClapTrap(void);
+
+		ClapTrap &operator=(const ClapTrap &rhs);
+
+		void attack(const std::string& target);
+		void takeDamage(unsigned int amount);
+		void beRepaired(unsigned int amount);
 };
 
 #endif

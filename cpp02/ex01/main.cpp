@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 12:04:10 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/08/30 12:04:26 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/09/13 10:10:03 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int main(void) {
 	Fixed a;
-	Fixed const b(10);
+	Fixed const b(0);
 	Fixed const c(42.42f);
-	Fixed const d(b);
+	Fixed const d(c);
 
 	a = Fixed(1234.4321f);
 

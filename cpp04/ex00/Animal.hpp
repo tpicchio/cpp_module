@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 10:50:52 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/09/01 11:11:41 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/09/14 11:56:22 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@ class Animal
 	public:
 		Animal();
 		Animal(std::string type);
-		Animal(Animal const &other);
+		Animal(Animal const &cpy);
 		virtual ~Animal();
-		Animal &operator=(Animal const &other);
+
+		Animal &operator=(Animal const &cpy);
+
 		std::string getType() const;
 		virtual void makeSound() const;
 };
