@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 10:30:51 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/09/16 16:45:23 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/09/17 17:16:16 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,16 @@ void AForm::beSigned(Bureaucrat &bureaucrat)
 void AForm::execute(Bureaucrat const &executor) const
 {
 	if (!_signed)
-		throw AForm::GradeTooLowException();
+		throw AForm::FormNotSignedException();
 	if (executor.getGrade() > _gradeToExec)
 		throw AForm::GradeTooLowException();
 }
 
 std::ostream &operator<<(std::ostream &out, const AForm &rhs)
 {
-	out << "Form: " << rhs.getName() << " requires grade " << rhs.getGradeToSign() << " to sign."<< std::endl;
+	out << "Form type: " << rhs.getName() << std::endl;
+	out << "Grade to sign: " << rhs.getGradeToSign() << std::endl;
+	out << "Grade to execute: " << rhs.getGradeToExec() << std::endl;
 	return out;
 }
 
@@ -94,6 +96,6 @@ const char *AForm::GradeTooLowException::what() const throw()
 
 const char *AForm::FormNotSignedException::what() const throw()
 {
-	return "Form is not signed";
+	return "the form is not signed";
 }
 

@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 15:58:16 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/09/16 16:42:03 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:42:35 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ class Bureaucrat
 
 		std::string getName() const;
 		int getGrade() const;
+		void setGrade(int grade);
 
 		void incrementGrade();
 		void decrementGrade();

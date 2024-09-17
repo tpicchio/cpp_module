@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 16:02:22 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/09/16 16:47:04 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/09/17 17:10:23 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,15 @@ int Bureaucrat::getGrade() const
 	return _grade;
 }
 
+void Bureaucrat::setGrade(int grade)
+{
+	if (grade < 1)
+		throw Bureaucrat::GradeTooHighException();
+	if (grade > 150)
+		throw Bureaucrat::GradeTooLowException();
+	_grade = grade;
+}
+
 void Bureaucrat::incrementGrade()
 {
 	if (_grade - 1 < 1)
@@ -80,22 +89,20 @@ void Bureaucrat::signForm(AForm &form)
 
 void Bureaucrat::executeForm(AForm const &form) const
 {
-	if (form.getSigned() && form.getGradeToExec() >= _grade)
+	try
 	{
-		std::cout << "\033[1;32m" << _name << " executed " << form.getName() << ".\033[0m" << std::endl;
 		form.execute(*this);
+		std::cout << "\033[1;32m" << _name << " executed " << form.getName() << ".\033[0m" << std::endl;
 	}
-	else if (!form.getSigned())
+	catch(const std::exception &e)
 	{
-		std::cout << "\033[1;31m" << _name << " couldn’t execute " << form.getName() << " because it's not signed.\033[0m" << std::endl;
+		std::cerr << "\033[1;31m" << _name << " couldn’t execute " << form.getName() << " because " << e.what() << "\033[0m" << std::endl;
 	}
-	else
-		std::cout << "\033[1;31m" << _name << " couldn’t execute " << form.getName() << " because grade is too low.\033[0m" << std::endl;
 }
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &rhs)
 {
-	out << rhs.getName() << ", bureaucrat grade " << rhs.getGrade() << ".";
+	out << rhs.getName() << ", bureaucrat grade " << rhs.getGrade() << "." << std::endl;
 	return out;
 }
 

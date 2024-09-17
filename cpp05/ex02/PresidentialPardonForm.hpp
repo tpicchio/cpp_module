@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 16:02:39 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/09/16 16:02:54 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:50:03 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ class PresidentialPardonForm : public AForm
 
 		void execute(Bureaucrat const &executor) const;
 };
+
+std::ostream &operator<<(std::ostream &out, const PresidentialPardonForm &rhs);
 
 #endif

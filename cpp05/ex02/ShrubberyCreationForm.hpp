@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:11:01 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/09/16 16:34:16 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:46:22 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,7 @@ class ShrubberyCreationForm : public AForm
 			virtual const char *what() const throw();
 		};
 };
+
+std::ostream &operator<<(std::ostream &out, const ShrubberyCreationForm &rhs);
 
 #endif

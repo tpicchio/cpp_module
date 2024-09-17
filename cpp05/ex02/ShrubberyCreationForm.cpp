@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:46:16 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/09/16 16:29:25 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:51:31 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 	if (!getSigned())
 		throw AForm::FormNotSignedException();
 	std::ofstream file;
-	file.open(filename.c_str());
+	file.open(filename.c_str(), std::ios::app);
 	file << "      /\\      " << std::endl;
 	file << "     /\\*\\     " << std::endl;
 	file << "    /\\O\\*\\    " << std::endl;
@@ -71,12 +71,9 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 
 std::ostream &operator<<(std::ostream &out, const ShrubberyCreationForm &rhs)
 {
-	out << "ShrubberyCreationForm " << rhs.getName() << " is ";
-	if (rhs.getSigned())
-		out << "signed";
-	else
-		out << "not signed";
-	out << " and requires grade " << rhs.getGradeToSign() << " to sign and grade " << rhs.getGradeToExec() << " to execute";
+	out << "Form name: " << rhs.getName() << std::endl;
+	out << "Grade to sign: " << rhs.getGradeToSign() << std::endl;
+	out << "Grade to execute: " << rhs.getGradeToExec() << std::endl;
 	return out;
 }
 

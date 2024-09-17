@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 15:53:58 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/09/16 16:32:22 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:49:59 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,7 @@ class RobotomyRequestForm : public AForm
 
 		
 };
+
+std::ostream &operator<<(std::ostream &out, const RobotomyRequestForm &rhs);
 
 #endif

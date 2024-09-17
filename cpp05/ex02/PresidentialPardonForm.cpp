@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 16:02:57 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/09/16 16:45:19 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:51:51 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,12 @@ void PresidentialPardonForm::execute(Bureaucrat const &executor) const
 	if (!getSigned())
 		throw AForm::FormNotSignedException();
 	std::cout << _target << " has been pardoned by Zafod Beeblebrox" << std::endl;
+}
+
+std::ostream &operator<<(std::ostream &out, const PresidentialPardonForm &rhs)
+{
+	out << "Form name: " << rhs.getName() << std::endl;
+	out << "Grade to sign: " << rhs.getGradeToSign() << std::endl;
+	out << "Grade to execute: " << rhs.getGradeToExec() << std::endl;
+	return out;
 }
