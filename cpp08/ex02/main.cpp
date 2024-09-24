@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 10:45:52 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/09/24 12:23:24 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/09/24 12:46:17 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int main()
 	while (answer != '0')
 	{
 		std::cout << "\n\033[0mOptions:\n1. Push\n2. Pop\n3. Top\n4. Size\n" <<
-					 "5. Begin\n6. End\n7. Print\n0. Exit\nEnter option: ";
+					 "5. Begin\n6. Print\n0. Exit\nEnter option: ";
 		std::cin >> answer;
 		if (checkInput() == 1)
 			continue;
@@ -83,12 +83,6 @@ int main()
 					std::cout << "\nBegin: " << *mutant.begin() << std::endl;
 				break;
 			case '6':
-				if (mutant.size() == 0)
-					std::cout << "\nStack is empty\n";
-				else
-					std::cout << "\nEnd: " << *mutant.end() << std::endl;
-				break;
-			case '7':
 				if (mutant.size() == 0)
 					std::cout << "\nStack is empty\n";
 				else {
