@@ -6,22 +6,21 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 11:19:29 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/10/04 18:17:41 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/10/06 12:53:16 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe() : _v(), _d(), _vTime(0), _dTime(0)
+PmergeMe::PmergeMe() : _v(), _d()
 {
 }
 
-PmergeMe::PmergeMe(std::vector<int> v1, std::deque<int> d1) : _v(v1), _d(d1), _vTime(0), _dTime(0)
+PmergeMe::PmergeMe(std::vector<int> v1, std::deque<int> d1) : _v(v1), _d(d1)
 {
-	// gen_jacobsthal_sequence (_v.size());
 }
 
-PmergeMe::PmergeMe(const PmergeMe &copy) : _v(copy._v), _d(copy._d), _vTime(copy._vTime), _dTime(copy._dTime)
+PmergeMe::PmergeMe(const PmergeMe &copy) : _v(copy._v), _d(copy._d)
 {
 }
 
@@ -35,89 +34,52 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &copy)
 	{
 		_v = copy._v;
 		_d = copy._d;
-		_vTime = copy._vTime;
-		_dTime = copy._dTime;
 	}
 	return (*this);
 }
 
-// void PmergeMe::gen_jacobsthal_sequence(int size)
-// {
-// 	_jacob.push_back(1);
-// 	_jacob.push_back(3);
-	
-// }
-
-void PmergeMe::sortVector()
+void PmergeMe::display(std::vector<int> input, double time_V, double time_D)
 {
-	struct timeval start_time, end_time;
-	int	struggler;
-
-	gettimeofday(&start_time, NULL);
-	if (_v.size() % 2 != 0)
+	std::cout << "Numbers unsorted:" << std::endl;
+	for (int i = 0; i < (int)input.size(); i++)
 	{
-		struggler = _v.back();
-		_v.pop_back();
+		std::cout << input[i] << " ";
+		if(i > 15)
+		{
+			std::cout << "...";
+			break;
+		}
 	}
-	sort_by_pair(1);
+	std::cout << "\n\nNumbers sorted:" << std::endl;
 	for (int i = 0; i < (int)_v.size(); i++)
 	{
 		std::cout << _v[i] << " ";
-	}
-	std::cout << std::endl;
-	gettimeofday(&end_time, NULL);
-	this->_vTime = (end_time.tv_sec - start_time.tv_sec) 
-						+ (end_time.tv_usec - start_time.tv_usec) / 1000000.0;
-}
-
-void PmergeMe::sort_by_pair(int step)
-{
-	std::vector<int>::iterator first, middle, last;
-
-	if ((step * 2) - 1 >= (int)_v.size() || step >= (int)_v.size())
-		return;
-	for(int i = step - 1; i + step < (int)_v.size(); i += (step * 2))
-	{
-		if (_v[i] > _v[i + step])
+		if(i > 15)
 		{
-			first = _v.begin() + i - (step - 1);
-			middle = _v.begin() + i + 1;
-			last = _v.begin() + i + step + 1;
-			std::rotate(first, middle, last);
+			std::cout << "...";
+			break;
 		}
 	}
-	sort_by_pair(step * 2);
-	binary_insertion(step);
-}
-
-static int jacobsthal(int n)
-{
-	if(n == 0)
-		return 0;
-
-	if (n == 1)
-		return 1;
-
-	return jacobsthal(n - 1) + 2 * jacobsthal(n - 2);
-}
-
-void PmergeMe::binary_insertion(int step)
-{
-	std::vector<int> chainA, chainB;
-	int jacobPrev, jacobIt;
-	
-	for(int i = step - 1; i + step < (int)_v.size(); i += (step * 2))
+	std::cout << std::endl;
+	std::cout << std::fixed << std::setprecision(6);
+	std::cout << BLUE "\nTime taken to sort the vector: " << time_V << "s" RESET << std::endl;
+	std::cout << YELLOW "\nTime taken to sort the deque: " << time_D << "s\n" RESET << std::endl;
+	for (int i = 0; i < (int)_v.size() - 1; i++)
 	{
-		chainB.push_back(_v[i]);
-		chainA.push_back(_v[i + step]);
-		if(i + (step * 2) < (int)_v.size() && i + (step * 3) >= (int)_v.size())
-			chainB.push_back(_v[i + (step * 2) ]);
+		if (_v[i] > _v[i + 1])
+		{
+			std::cout << RED << "Vector isn't sorted." << RESET << std::endl;
+			return;
+		}
 	}
-	chainA.insert(chainA.begin(), chainB[0]);
-	jacobPrev = 1;
-	jacobIt = 3;
-	for (; jacobsthal(jacobIt) < chainB.size(); jacobIt++)
+	std::cout << GREEN << "Vector is sorted.\n" << RESET << std::endl;
+	for (int i = 0; i < (int)_d.size() - 1; i++)
 	{
-		
+		if (_d[i] > _d[i + 1])
+		{
+			std::cout << RED << "Deque isn't sorted." << RESET << std::endl;
+			return;
+		}
 	}
+	std::cout << GREEN << "Deque is sorted.\n" << RESET << std::endl;
 }

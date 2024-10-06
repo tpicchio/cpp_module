@@ -6,33 +6,30 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 11:21:40 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/10/04 17:59:12 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/10/06 12:51:27 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-// int jacobsthal(int n)
-// {
-// 	if(n == 0)
-// 		return 0;
-
-// 	if (n == 1)
-// 		return 1;
-
-// 	return jacobsthal(n - 1) + 2 * jacobsthal(n - 2);
-// }
-
 int main(int ac, char **av)
 {
 	std::vector<int> v1;
 	std::deque<int> d1;
+	struct timeval start_V, end_V, start_D, end_D;
+	double time_V, time_D;
 	int tmp;
+	char answer = 'n';
 
 	if (ac < 3)
 		return std::cout << RED << "Error: not enough numbers." << RESET << std::endl, 1;
-	if (ac > 5000)
-		return std::cout << RED << "Error: too many numbers." << RESET << std::endl, 1;
+	if (ac >= 10000)
+	{
+		std::cout << YELLOW << "That's a lot of numbers, this may take a while.\nDo you want to continue? [y/n]: " << RESET;
+		std::cin >> answer;
+		if (answer != 'y')
+			return 0;
+	}
 	for (int i = 1; i < ac; i++)
 	{
 		for (int j = 0; av[i][j]; j++)
@@ -45,10 +42,20 @@ int main(int ac, char **av)
 		d1.push_back(tmp);
 	}
 	PmergeMe p(v1, d1);
+	gettimeofday(&start_V, NULL);
 	p.sortVector();
-	// for (int i = 0; i < 10 ; i++)
-	// 	std::cout << jacobsthal(i) << std::endl;
-	// p.sortDeque();
-	// p.display();
+	gettimeofday(&end_V, NULL);
+
+	gettimeofday(&start_D, NULL);
+	p.sortDeque();
+	gettimeofday(&end_D, NULL);
+
+	time_V = (end_V.tv_sec - start_V.tv_sec) * 1e6 + (end_V.tv_usec - start_V.tv_usec);
+	time_V /= 1e6;
+
+	time_D = (end_D.tv_sec - start_D.tv_sec) * 1e6 + (end_D.tv_usec - start_D.tv_usec);
+	time_D /= 1e6;
+
+	p.display(v1, time_V, time_D);
 	return 0;
 }

@@ -6,13 +6,13 @@
 #    By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/03 18:12:28 by tpicchio          #+#    #+#              #
-#    Updated: 2024/10/03 18:12:49 by tpicchio         ###   ########.fr        #
+#    Updated: 2024/10/06 12:44:44 by tpicchio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = PmergeMe
 
-SRCS = main.cpp PmergeMe.cpp
+SRCS = main.cpp PmergeMe.cpp VectorPart.cpp DequePart.cpp
 
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
