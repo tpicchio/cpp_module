@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 12:32:03 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/10/06 12:52:34 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/10/06 15:54:47 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,17 @@ void PmergeMe::binary_insertion_v(int step)
 				{
 					chainB.push_back(_v[k]);
 				}
+				if(j + step >= (int)_v.size())
+				{
+					numAdded = j + 1;
+					break;
+				}
 			}
 		}
+	}
+	for(int i = numAdded; i < (int)_v.size(); i++)
+	{
+		chainB.push_back(_v[i]);
 	}
 	_v.clear();
 	for(int i = 0; i < (int)chainB.size(); i++)

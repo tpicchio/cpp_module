@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 18:13:03 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/10/06 12:39:39 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/10/06 15:53:50 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ class PmergeMe
 		void sort_by_pair_d(int step);
 		void binary_insertion_d(int step);
 
-		int jacobsthal(int n);
+		int	 jacobsthal(int n);
+		void errorCheck(std::vector<int> input);
 		
 	public:
 		PmergeMe();
