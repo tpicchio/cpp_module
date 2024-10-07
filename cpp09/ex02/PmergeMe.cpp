@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 11:19:29 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/10/06 16:00:20 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/10/07 10:57:43 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,8 @@ void PmergeMe::errorCheck(std::vector<int> input)
 
 void PmergeMe::display(std::vector<int> input, double time_V, double time_D)
 {
-	std::cout << "Numbers unsorted:" << std::endl;
+	std::cout << CLEAR;
+	std::cout << "Unsorted numbers:" << std::endl;
 	for (int i = 0; i < (int)input.size(); i++)
 	{
 		std::cout << input[i] << " ";
@@ -102,7 +103,7 @@ void PmergeMe::display(std::vector<int> input, double time_V, double time_D)
 			break;
 		}
 	}
-	std::cout << "\n\nNumbers sorted:" << std::endl;
+	std::cout << "\n\nSorted numbers:" << std::endl;
 	for (int i = 0; i < (int)_v.size(); i++)
 	{
 		std::cout << _v[i] << " ";
@@ -114,7 +115,7 @@ void PmergeMe::display(std::vector<int> input, double time_V, double time_D)
 	}
 	std::cout << std::endl;
 	std::cout << std::fixed << std::setprecision(6);
-	std::cout << BLUE "\nTime taken to sort the vector: " << time_V << "s" RESET << std::endl;
-	std::cout << YELLOW "\nTime taken to sort the deque: " << time_D << "s\n" RESET << std::endl;
+	std::cout << BLUE "\nTime to process " << input.size() << " numbers with std::vector: " << time_V << "s\n" RESET;
+	std::cout << YELLOW "\nTime taken to process " << input.size() << " numbers with std::deque: " << time_D << "s\n" RESET << std::endl;
 	errorCheck(input);
 }

@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 18:13:03 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/10/06 15:53:50 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/10/07 10:57:35 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 #define BLUE "\033[1m\033[34m"
 #define YELLOW "\033[1m\033[33m"
 #define RESET "\033[0m"
+#define CLEAR "\033[2J\033[1;1H"
 
 class PmergeMe
 {
