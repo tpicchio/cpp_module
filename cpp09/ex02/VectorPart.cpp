@@ -6,22 +6,11 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 12:32:03 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/10/07 11:21:28 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/10/09 15:50:23 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-
-int PmergeMe::jacobsthal(int n)
-{
-	if(n == 0)
-		return 0;
-
-	if (n == 1)
-		return 1;
-
-	return jacobsthal(n - 1) + 2 * jacobsthal(n - 2);
-}
 
 void PmergeMe::sortVector()
 {
@@ -62,6 +51,15 @@ void PmergeMe::sort_by_pair_v(int step)
 	binary_insertion_v(step);
 }
 
+static int jacobsthal(int n)
+{
+    if(n == 0)
+        return 0;
+    if (n == 1)
+        return 1;
+    return jacobsthal(n - 1) + 2 * jacobsthal(n - 2);
+}
+
 void PmergeMe::binary_insertion_v(int step)
 {
 	std::vector<int> chainA, chainB;
@@ -78,26 +76,15 @@ void PmergeMe::binary_insertion_v(int step)
 	}
 	chainA.insert(chainA.begin(), chainB[0]);
 	numAdded++;
-	jacobIt = jacobsthal(2);
+	jacobIt = 1;
 	jacobPrev = 0;
-	while (1)
+	while (numAdded < (int)chainB.size())
 	{
 		jacobIt = jacobsthal(jacobIt + 2) - 1;
-		if(jacobIt >= (int)chainB.size())
+		for (int j = jacobIt; j > jacobPrev; j--)
 		{
-			for (int j = jacobPrev + 1; j < (int)chainB.size(); j++)
-			{
-				itInsert = std::lower_bound(chainA.begin(), chainA.end(), chainB[j]);
-				chainA.insert(itInsert, chainB[j]);
-				numAdded++;
-			}
-			break;
-		}
-		itInsert = std::lower_bound(chainA.begin(), chainA.begin() + jacobIt + numAdded, chainB[jacobIt]);
-		chainA.insert(itInsert, chainB[jacobIt]);
-		numAdded++;
-		for (int j = jacobIt - 1; j > jacobPrev; j--)
-		{
+			if(j >= (int)chainB.size())
+				continue;
 			itInsert = std::lower_bound(chainA.begin(), chainA.begin() + j + numAdded, chainB[j]);
 			chainA.insert(itInsert, chainB[j]);
 			numAdded++;

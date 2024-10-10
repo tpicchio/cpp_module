@@ -6,12 +6,11 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 12:33:58 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/10/07 11:23:05 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/10/09 15:51:42 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-
 
 void PmergeMe::sortDeque()
 {
@@ -52,6 +51,17 @@ void PmergeMe::sort_by_pair_d(int step)
 	binary_insertion_d(step);
 }
 
+static int jacobsthal(int n)
+{
+	if(n == 0)
+		return 0;
+
+	if (n == 1)
+		return 1;
+
+	return jacobsthal(n - 1) + 2 * jacobsthal(n - 2);
+}
+
 void PmergeMe::binary_insertion_d(int step)
 {
 	std::deque<int> chainA, chainB;
@@ -68,26 +78,15 @@ void PmergeMe::binary_insertion_d(int step)
 	}
 	chainA.insert(chainA.begin(), chainB[0]);
 	numAdded++;
-	jacobIt = jacobsthal(2);
+	jacobIt = 1;
 	jacobPrev = 0;
-	while (1)
+	while (numAdded < (int)chainB.size())
 	{
 		jacobIt = jacobsthal(jacobIt + 2) - 1;
-		if(jacobIt >= (int)chainB.size())
+		for (int j = jacobIt; j > jacobPrev; j--)
 		{
-			for (int j = jacobPrev + 1; j < (int)chainB.size(); j++)
-			{
-				itInsert = std::lower_bound(chainA.begin(), chainA.end(), chainB[j]);
-				chainA.insert(itInsert, chainB[j]);
-				numAdded++;
-			}
-			break;
-		}
-		itInsert = std::lower_bound(chainA.begin(), chainA.begin() + jacobIt + numAdded, chainB[jacobIt]);
-		chainA.insert(itInsert, chainB[jacobIt]);
-		numAdded++;
-		for (int j = jacobIt - 1; j > jacobPrev; j--)
-		{
+			if(j >= (int)chainB.size())
+				continue;
 			itInsert = std::lower_bound(chainA.begin(), chainA.begin() + j + numAdded, chainB[j]);
 			chainA.insert(itInsert, chainB[j]);
 			numAdded++;

@@ -6,7 +6,7 @@
 /*   By: tpicchio <tpicchio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 11:19:29 by tpicchio          #+#    #+#             */
-/*   Updated: 2024/10/07 10:57:43 by tpicchio         ###   ########.fr       */
+/*   Updated: 2024/10/09 15:57:30 by tpicchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void PmergeMe::errorCheck(std::vector<int> input)
 
 void PmergeMe::display(std::vector<int> input, double time_V, double time_D)
 {
-	std::cout << CLEAR;
+	// std::cout << CLEAR;
 	std::cout << "Unsorted numbers:" << std::endl;
 	for (int i = 0; i < (int)input.size(); i++)
 	{
